@@ -1,12 +1,6 @@
 <!doctype html>
 <html lang="en">
 	<head>
-		{% if jekyll.environment == 'production' %}
-	    	{% include analytics.html %}
-	    	{% if page.hasAds == true %}
-	    		{% include ads.html %}
-	    	{% endif %}
-	    {% endif %}
 		<title>{{ site.name }} | {{ page.title }} | </title>
 
 		<!-- Required meta tags -->
