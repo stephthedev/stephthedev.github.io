@@ -13,9 +13,23 @@ hasAds: true
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <div class="alert alert-info">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>New feature</strong>: Calculate 5e travel times <a href="/dnd-travel-calculator">here</a>
+            </div>
+        </div>
+    </div>
+
     <div class="row mt-2">
         <div class="col-md-3">
-            {% include instructions.html %}
+            <div class="card">
+                <div class="card-header">Instructions</div>
+                <div class="card-body">
+                    Use this tool to convert lower value coins to higher value coins. Additionally, evenly split coins between team members.
+                </div>
+            </div>
         </div>
 
         <div class="col-md-6">
@@ -144,4 +158,4 @@ hasAds: true
     </script>
 </div>
 
-<script src="dist/bundle.min.js"></script>
+<script src="dist/exchange-rate.min.js"></script>
