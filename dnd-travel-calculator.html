@@ -26,15 +26,15 @@ hasAds: true
         <div class="col-md-6">
             <form class="form-horizontal" onkeyup="return calculate();" onchange="return calculate();">
                 <div class="form-group mr-1">
-                    <label for="miles">Total Miles at Normal Pace</label>
-                    <input class="form-control" type="tel" id="miles" name="miles"></input>
+                    <label for="miles">Total Miles in Normal Terrain</label>
+                    <input class="form-control" type="tel" id="miles" name="miles" maxlength="10"></input>
                 </div>
 
                  <div class="form-group">
-                    <label for="diffMiles">Total Miles at Difficult Pace</label>
-                    <input class="form-control" type="tel" id="diffMiles" name="diffMiles"></input>
+                    <label for="diffMiles">Total Miles in Difficult Terrain</label>
+                    <input class="form-control" type="tel" id="diffMiles" name="diffMiles" maxlength="10"></input>
                 </div>
-                <!--
+                
                 <div class="form-group">
                     <label for="pace">Pace</label>
                     <select id="pace">
@@ -43,7 +43,6 @@ hasAds: true
                       <option value="fast">Fast</option>
                     </select>
                 </div>
-                -->
             </form>
         </div>
 
@@ -55,11 +54,17 @@ hasAds: true
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-md-12">
+            {% include pace.html %}
+        </div>
+    </div>
+
     <script type="text/javascript">
         function calculate() {
             var normalMiles = document.getElementById("miles").value;
             var difficultMiles = document.getElementById("diffMiles").value;
-            var pace = "normal"; //document.getElementById("pace").value;
+            var pace = document.getElementById("pace").value;
             var result = TravelCalculator.calculateDistance(normalMiles, difficultMiles, pace);
             //Unhide the result
             var resultDiv = document.getElementById("result");
