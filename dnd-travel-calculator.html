@@ -3,7 +3,7 @@ layout: default
 title: D&amp;D 5e travel calculator
 meta_description: "Dungeons and Dragons (5e) travel calculator"
 meta_keywords: "Dungeons and Dragons, dnd, 5e, dungeons, dragons, travel, time, distance, calculator"
-hasAds: true
+hasAds: false
 ---
 
 <div class="container">
@@ -13,66 +13,32 @@ hasAds: true
         </div>
     </div>
 
-    <div class="row mt-2">
-        <div class="col-md-3">
-            <div class="card">
-                <div class="card-header">Instructions</div>
-                <div class="card-body">
-                    Use this calculator to calculate total days, hours, and minutes for overland travel in D&amp;D 5e
-                </div>
-            </div>
+    <div class="card text-center">
+        <div class="card-header">
+            <ul id="tabs" class="nav nav-tabs card-header-tabs">
+                <li class="nav-item">
+                    <a id="by-land" class="nav-link active" onClick="swapTab(this);" href="#">By Land</a>
+                </li>
+                <li class="nav-item">
+                    <a id="by-sea" class="nav-link" onClick="swapTab(this);" href="#">By Sea</a>
+                </li>
+            </ul>
         </div>
-
-        <div class="col-md-6">
-            <form class="form-horizontal" onkeyup="return calculate();" onchange="return calculate();">
-                <div class="form-group mr-1">
-                    <label for="miles">Total Miles in Normal Terrain</label>
-                    <input class="form-control" type="tel" id="miles" name="miles" maxlength="10"></input>
-                </div>
-
-                 <div class="form-group">
-                    <label for="diffMiles">Total Miles in Difficult Terrain</label>
-                    <input class="form-control" type="tel" id="diffMiles" name="diffMiles" maxlength="10"></input>
-                </div>
-                
-                <div class="form-group">
-                    <label for="pace">Pace</label>
-                    <select id="pace">
-                      <option value="slow">Slow</option>
-                      <option value="normal" selected>Normal</option>
-                      <option value="fast">Fast</option>
-                    </select>
-                </div>
-            </form>
+        <div id="card-body-by-land" class="card-body travel-calc">
+            {% include land.html %}
         </div>
-
-        <div class="col-md-3">
-            <div id="result" class="alert alert-info invisible">
-                <h5>Results</h5>
-                <span id="placeholder"></span>
-            </div>
+        <div id="card-body-by-sea" class="d-none card-body travel-calc">
+            {% include sea.html %}
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-12">
-            {% include pace.html %}
-        </div>
-    </div>
 
     <script type="text/javascript">
-        function calculate() {
-            var normalMiles = document.getElementById("miles").value;
-            var difficultMiles = document.getElementById("diffMiles").value;
-            var pace = document.getElementById("pace").value;
-            var result = TravelCalculator.calculateDistance(normalMiles, difficultMiles, pace);
-            //Unhide the result
-            var resultDiv = document.getElementById("result");
-            resultDiv.classList.remove("invisible");
-
-            var placeholder = document.getElementById("placeholder");
-            placeholder.innerHTML = result.days + "d " +result.hours + "h " + result.minutes + "m";
-            return false;
+        function swapTab(link) {
+            $(".nav-link").removeClass("active");
+            $("#" + link.id).addClass("active");
+            $(".travel-calc").addClass("d-none");
+            $("#card-body-" + link.id).removeClass("d-none");
         }
     </script>
 </div>

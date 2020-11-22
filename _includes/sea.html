@@ -1,0 +1,60 @@
+<div class="row mt-2">
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-header">Instructions</div>
+            <div class="card-body">
+                Calculate total days, hours, and minutes for sea travel in D&amp;D 5e
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <form class="form-horizontal" onkeyup="return calculateBySea();" onchange="return calculateBySea();">
+            <div class="form-group mr-1">
+                <label for="nautical-miles">Total Miles</label>
+                <input class="form-control" type="tel" id="nautical-miles" name="nautical-miles" maxlength="10"></input>
+            </div>
+            
+            <div class="form-group">
+                <label for="ship">Ship</label>
+                <select id="ship">
+                  <option value="galley">Galley</option>
+                  <option value="keelboat" selected>Keelboat</option>
+                  <option value="longship">Longship</option>
+                  <option value="rowboat">Rowboat</option>
+                  <option value="sailingship">Sailing Ship</option>
+                  <option value="warship">Warship</option>
+                </select>
+            </div>
+        </form>
+    </div>
+
+    <div class="col-md-3">
+        <div id="result-by-sea" class="alert alert-info invisible">
+            <h5>Results</h5>
+            <span id="placeholder-by-sea"></span>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        {% include ship.html %}
+    </div>
+</div>
+
+<script type="text/javascript">
+    function calculateBySea() {
+        var miles = document.getElementById("nautical-miles").value;
+        var ship = document.getElementById("ship").value;
+        var result = TravelCalculator.calculateTravelTimeBySea(miles, ship);
+        
+        //Unhide the result
+        var resultDiv = document.getElementById("result-by-sea");
+        resultDiv.classList.remove("invisible");
+
+        var placeholder = document.getElementById("placeholder-by-sea");
+        placeholder.innerHTML = result.days + "d " +result.hours + "h " + result.minutes + "m";
+        return false;
+    }
+</script>
