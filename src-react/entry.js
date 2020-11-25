@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import {render} from 'react-dom';
-import LandTravelCalculator from './components/calculator/land/index';
+import TravelCalculator from './TravelCalculator.js';
+import ExchangeRate from './ExchangeRate.js';
 
 class App extends Component {
  render() {
  	return (
- 		<LandTravelCalculator></LandTravelCalculator>
+ 		<ExchangeRate></ExchangeRate>
  	)
  }
 }
