@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class FormCaption extends Component {
+export default class CoinConverterCaption extends Component {
   
   constructor(props) {
     super(props)
@@ -70,5 +70,3 @@ class FormCaption extends Component {
     )
   }
 }
-
-export default FormCaption;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {render} from 'react-dom';
-import LandTravelCalculator from './components/calculator/travel/land/LandTravelCalculator';
-import SeaTravelCalculator from './components/calculator/travel/sea/SeaTravelCalculator';
+import LandTravelCalculator from './land/LandTravelCalculator';
+import SeaTravelCalculator from './sea/SeaTravelCalculator';
 
 class TravelCalculator extends Component {
 
@@ -21,9 +21,7 @@ class TravelCalculator extends Component {
             activeTab: e.target.name
         });
     }
-
-
-
+    
     render() {
         //Default state
         let landStyle = "nav-link active";

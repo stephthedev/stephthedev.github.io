@@ -3,8 +3,9 @@ import React, { Component } from 'react';
 import ExchangeRate from '../../../../src-jekyll/dist/exchange-rate.min.js';
 import CalculatorDisplay from '../display/CalculatorDisplay'
 import PerPersonResult from './PerPersonResult'
+import CoinConverterCaption from "./CoinConverterCaption";
 
-export default class CoinExchange extends Component { 
+export default class CoinConverterCalculator extends Component { 
 
   constructor(props) {
     super(props);
@@ -177,13 +178,15 @@ export default class CoinExchange extends Component {
   }
 
   render() {
-    let instructions = "Use this tool to convert lower value coins to higher value coins. Additionally, evenly split coins between team members.";
-    let form = this.renderForm();
+    const instructions = "Use this tool to convert lower value coins to higher value coins. Additionally, evenly split coins between team members.";
+    const form = this.renderForm();
+    const caption = (<CoinConverterCaption />);
     return (
       <CalculatorDisplay 
         instructions={instructions}
         form={form}
-        result={this.state.humanReadableResult}/>
+        result={this.state.humanReadableResult}
+        calculatorCaption={caption}/>
     );
   }
 }

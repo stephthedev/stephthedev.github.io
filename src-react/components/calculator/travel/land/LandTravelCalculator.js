@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import TravelCalculator from '../../../../../src-jekyll/dist/travel-calculator.min.js';
 import CalculatorDisplay from '../../display/CalculatorDisplay'
-import FormCaption from "./Caption";
+import LandTravelCaption from './LandTravelCaption';
 
-class LandTravelCalculator extends Component { 
+export default class LandTravelCalculator extends Component { 
 
   constructor(props) {
     super(props);
@@ -74,15 +74,13 @@ class LandTravelCalculator extends Component {
   render() {
     const instructions = "Calculate total days, hours, and minutes for overland travel";
     const form = this.renderForm();
-    const caption = (<FormCaption />);
+    const caption = (<LandTravelCaption />);
     return (
       <CalculatorDisplay 
         instructions={instructions}
         form={form}
         result={this.state.humanReadableResult}
-        formCaption={caption}/>
+        calculatorCaption={caption}/>
     );
   }
 }
-
-export default LandTravelCalculator;

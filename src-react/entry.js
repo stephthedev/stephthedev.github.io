@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {render} from 'react-dom';
-import TravelCalculator from './TravelCalculator.js';
-import ExchangeRate from './ExchangeRate.js';
+import TravelCalculator from './components/calculator/travel/TravelCalculator';
+import CoinCalculator from './components/calculator/coin/CoinConverterCalculator';
 import IndexPage from './index.js';
 
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom"; 
@@ -13,7 +13,7 @@ class App extends Component {
       <main role="main">
         <div class="container mt-3">
           <Switch>
-            <Route path = "/dnd-exchange-rate" component = {ExchangeRate} />
+            <Route path = "/dnd-exchange-rate" component = {CoinCalculator} />
             <Route path = "/dnd-travel-calculator" component = {TravelCalculator} />
             <Route exact path = "/" component={IndexPage} />
           </Switch>
