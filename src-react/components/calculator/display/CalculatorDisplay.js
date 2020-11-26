@@ -23,12 +23,14 @@ class CalculatorDisplay extends Component {
         </div>
 
         <div class="col-md-3">
-          <div id="result" class="alert alert-info">
+          {this.props.result &&
+            <div id="result" class="alert alert-info">
               <h5>Results</h5>
-              <span name="placeholder">
-                {this.props.result}
-              </span>
-          </div>
+                <span name="placeholder">
+                  {this.props.result}
+                </span>
+            </div>
+          }
         </div>
       </div>
     );
