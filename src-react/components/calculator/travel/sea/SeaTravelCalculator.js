@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TravelCalculator from '../../../../../src-jekyll/dist/travel-calculator.min.js';
 import CalculatorDisplay from '../../display/CalculatorDisplay'
+// import Caption from "./Caption";
 
 class SeaTravelCalculator extends Component { 
 

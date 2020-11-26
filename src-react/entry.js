@@ -4,23 +4,28 @@ import TravelCalculator from './TravelCalculator.js';
 import ExchangeRate from './ExchangeRate.js';
 import IndexPage from './index.js';
 
-import { Route, Link, BrowserRouter as Router } from 'react-router-dom'  
+import { BrowserRouter as Router, Switch, Route} from "react-router-dom"; 
 
 class App extends Component {
  render() {
-  let result = (<Route path = "/" component = {IndexPage}/>);
-
  	return (
-    <main role="main">
-      <div class="container">
-       	<Router>
-          <Route path = "/dnd-exchange-rate" component = {ExchangeRate} />
-          <Route path = "/dnd-travel-calculator" component = {TravelCalculator} />
-        </Router>
-      </div>
-    </main>
+    <Router>
+      <main role="main">
+        <div class="container mt-3">
+          <Switch>
+            <Route path = "/dnd-exchange-rate" component = {ExchangeRate} />
+            <Route path = "/dnd-travel-calculator" component = {TravelCalculator} />
+            <Route exact path = "/" component={IndexPage} />
+          </Switch>
+        </div>
+      </main>
+    </Router>
  	)
  }
 }
 
-render(<App />, document.getElementById('root'));
+render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>, 
+  document.getElementById('root'));

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TravelCalculator from '../../../../../src-jekyll/dist/travel-calculator.min.js';
 import CalculatorDisplay from '../../display/CalculatorDisplay'
+import FormCaption from "./Caption";
 
 class LandTravelCalculator extends Component { 
 
@@ -71,13 +72,15 @@ class LandTravelCalculator extends Component {
   }
 
   render() {
-    let instructions = "Calculate total days, hours, and minutes for overland travel";
-    let form = this.renderForm();
+    const instructions = "Calculate total days, hours, and minutes for overland travel";
+    const form = this.renderForm();
+    const caption = (<FormCaption />);
     return (
       <CalculatorDisplay 
         instructions={instructions}
         form={form}
-        result={this.state.humanReadableResult}/>
+        result={this.state.humanReadableResult}
+        formCaption={caption}/>
     );
   }
 }
