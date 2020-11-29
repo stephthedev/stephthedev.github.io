@@ -64,8 +64,12 @@ export default class CoinConverterCalculator extends Component {
   getPerPersonResults = (coins) => {
     const coinOpts = this.state.isCSGOnly ? ["cp", "sp", "gp"] : [];
 
+    //1. Get optimum results
+    const optimalResults = ExchangeRate.optimalExchange(coins, coinOpts)
+    
+    //2. Team Split
     const results = ExchangeRate.teamSplit(this.state.partySize, 
-          coins, 
+          optimalResults, 
           coinOpts);
 
     //Construct a map of results to the count of that result

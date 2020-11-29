@@ -11,7 +11,7 @@ class App extends Component {
  	return (
     <Router>
       <main role="main">
-        <div class="container mt-3">
+        <div class="container mt-5">
           <Switch>
             <Route path = "/dnd-exchange-rate" component = {CoinCalculator} />
             <Route path = "/dnd-travel-calculator" component = {TravelCalculator} />

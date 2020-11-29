@@ -9,7 +9,7 @@ class CalculatorDisplay extends Component {
   render() {
     return (
       <div>
-        <div class="row mt-2">
+        <div class="row">
           <div class="col-md-3">
             <div class="card">
                 <div class="card-header">Instructions</div>
