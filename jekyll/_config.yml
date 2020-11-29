@@ -1,7 +1,6 @@
 title: stephthedev
 name: Stephanie Ortiz
 description: Software engineer
-source: src-jekyll
 plugins:
   - jekyll-seo-tag
 

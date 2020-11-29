@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TravelCalculator from '../../../../../src-jekyll/dist/travel-calculator.min.js';
+import TravelCalculator from './../../../../dist/travel-calculator.min.js';
 import CalculatorDisplay from '../../display/CalculatorDisplay'
 import LandTravelCaption from './LandTravelCaption';
 

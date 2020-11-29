@@ -1,11 +1,9 @@
 const path = require('path');
 
-const distDir = path.join(__dirname, "/src-jekyll/dist");
-
 module.exports = {
-  entry: "./src-react/App.js",
+  entry: "./App.js",
   output: {
-    path: distDir,
+    path: path.join(__dirname, "../jekyll/dist"),
     filename: "bundle.js"
   },
   module: {
@@ -22,7 +20,6 @@ module.exports = {
     contentBase: path.join(__dirname, 'src-react'),
     compress: true,
     port: 9000,
-    clientLogLevel: 'debug',
     writeToDisk: true
   }
 };

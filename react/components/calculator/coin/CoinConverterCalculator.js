@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import ExchangeRate from '../../../../src-jekyll/dist/exchange-rate.min.js';
+import ExchangeRate from './../../../dist/exchange-rate.min.js';
 import CalculatorDisplay from '../display/CalculatorDisplay'
 import PerPersonResult from './PerPersonResult'
 import CoinConverterCaption from "./CoinConverterCaption";

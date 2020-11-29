@@ -19,10 +19,10 @@ class IndexPage extends Component {
             <span>D&amp;D utilities</span>
             <ul class="list-group list-unstyled">
               <li>
-                <a class="list-group-item" href="/dnd-exchange-rate.html">Coin Converter Calculator</a>
+                <a class="list-group-item" href="/dnd-exchange-rate">Coin Converter Calculator</a>
               </li>
               <li>
-                <a class="list-group-item" href="/dnd-exchange-rate.html">Coin Converter</a>
+                <a class="list-group-item" href="/dnd-travel-calculator">Travel Calculator</a>
               </li>
             </ul>
           </div>
