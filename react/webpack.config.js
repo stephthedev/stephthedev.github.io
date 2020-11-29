@@ -4,7 +4,7 @@ module.exports = {
   entry: "./App.js",
   output: {
     path: path.join(__dirname, "../jekyll/dist"),
-    filename: "bundle.js"
+    filename: "bundle.min.js"
   },
   module: {
     rules: [{

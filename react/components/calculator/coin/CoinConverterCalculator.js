@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import ExchangeRate from 'dnd-exchange-rate';
 
-import ExchangeRate from './../../../dist/exchange-rate.min.js';
-import CalculatorDisplay from '../display/CalculatorDisplay'
-import PerPersonResult from './PerPersonResult'
+import CalculatorDisplay from '../display/CalculatorDisplay';
+import PerPersonResult from './PerPersonResult';
 import CoinConverterCaption from "./CoinConverterCaption";
 
 export default class CoinConverterCalculator extends Component { 

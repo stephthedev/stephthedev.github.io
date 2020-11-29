@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import TravelCalculator from './../../../../dist/travel-calculator.min.js';
+import TravelCalculator from 'dnd-travel-calculator';
+
 import CalculatorDisplay from '../../display/CalculatorDisplay'
 import SeaTravelCaption from './SeaTravelCaption';
 
-class SeaTravelCalculator extends Component { 
+export default class SeaTravelCalculator extends Component { 
 
   constructor(props) {
     super(props);
@@ -79,5 +80,3 @@ class SeaTravelCalculator extends Component {
     );
   }
 }
-
-export default SeaTravelCalculator;

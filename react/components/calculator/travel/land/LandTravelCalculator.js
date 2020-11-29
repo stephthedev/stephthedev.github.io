@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import TravelCalculator from './../../../../dist/travel-calculator.min.js';
+import TravelCalculator from 'dnd-travel-calculator';
+
 import CalculatorDisplay from '../../display/CalculatorDisplay'
 import LandTravelCaption from './LandTravelCaption';
 
@@ -72,7 +73,7 @@ export default class LandTravelCalculator extends Component {
   }
 
   render() {
-    const instructions = "Calculate total days, hours, and minutes for overland travel";
+    const instructions = "Calculate total days, hours, and minutes for overland travel.";
     const form = this.renderForm();
     const caption = (<LandTravelCaption />);
     return (
