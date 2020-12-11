@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {render} from 'react-dom';
+import { Link } from 'react-router-dom'
 
 class IndexPage extends Component {
 
@@ -19,10 +20,10 @@ class IndexPage extends Component {
             <span>D&amp;D utilities</span>
             <ul class="list-group list-unstyled">
               <li>
-                <a class="list-group-item" href="/dnd-exchange-rate">Coin Converter Calculator</a>
+                <Link to='/dnd-exchange-rate'>Coin Converter Calculator</Link>
               </li>
               <li>
-                <a class="list-group-item" href="/dnd-travel-calculator">Travel Calculator</a>
+                <Link to='/dnd-travel-calculator'>Travel Calculator</Link>
               </li>
             </ul>
           </div>
