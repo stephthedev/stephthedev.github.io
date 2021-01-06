@@ -17,24 +17,23 @@ export default class CoinConverterCalculator extends Component {
       gp: 0,
       pp: 0,
       partySize: 1,
-      isCSGOnly: true,
+      isCSGOnly: true
     };
 
     this.onChange = this.onChange.bind(this);
   }
 
+  onCheckboxChange = (e) => {
+    this.setState({
+      isCSGOnly: e.target.checked
+    });
+  }
+
   onChange = (e) => {
-    e.preventDefault();
-    if ("csgCoins" == e.target.name) {
-        this.setState({
-          isCSGOnly: e.target.checked
-        });
-    } else {
-      let valueAsInt = this.parseIntSafe(e.target.value);
-      this.setState({
-        [e.target.name]: valueAsInt
-      });
-    }
+    let valueAsInt = this.parseIntSafe(e.target.value);
+    this.setState({
+      [e.target.name]: valueAsInt
+    });
   }
 
   toCoinStr = (result) => {
@@ -167,7 +166,7 @@ export default class CoinConverterCalculator extends Component {
         <div class="form-check">
             <label class="form-check-label">
                 <input class="form-check-input" type="checkbox" id="csgCoins" 
-                name="csgCoins" onChange={this.onChange} defaultChecked={this.state.isCSGOnly}>
+                name="csgCoins" onChange={this.onCheckboxChange} defaultChecked>
                 </input>
                 Exchange only for copper, silver, and gold
             </label> 
