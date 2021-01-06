@@ -17,24 +17,23 @@ export default class CoinConverterCalculator extends Component {
       gp: 0,
       pp: 0,
       partySize: 1,
-      isCSGOnly: true,
+      isCSGOnly: true
     };
 
     this.onChange = this.onChange.bind(this);
   }
 
+  onCheckboxChange = (e) => {
+    this.setState({
+      isCSGOnly: e.target.checked
+    });
+  }
+
   onChange = (e) => {
-    e.preventDefault();
-    if ("csgCoins" == e.target.name) {
-        this.setState({
-          isCSGOnly: e.target.checked
-        });
-    } else {
-      let valueAsInt = this.parseIntSafe(e.target.value);
-      this.setState({
-        [e.target.name]: valueAsInt
-      });
-    }
+    let valueAsInt = this.parseIntSafe(e.target.value);
+    this.setState({
+      [e.target.name]: valueAsInt
+    });
   }
 
   toCoinStr = (result) => {
@@ -61,24 +60,22 @@ export default class CoinConverterCalculator extends Component {
     return 0;
   }
 
-  getPerPersonResults = (coins) => {
-    const coinOpts = this.state.isCSGOnly ? ["cp", "sp", "gp"] : [];
+  getPerPersonResults = (coins, coinOpts) => {
+    const { partySize } = this.state;
 
-    //1. Get optimum results
-    const optimalResults = ExchangeRate.optimalExchange(coins, coinOpts)
-    
-    //2. Team Split
-    const results = ExchangeRate.teamSplit(this.state.partySize, 
-          optimalResults, 
+    //1. Team split
+    const teamResults = ExchangeRate.teamSplit(partySize, 
+          coins, 
           coinOpts);
 
     //Construct a map of results to the count of that result
     const shareMap = {};
-    for (let share of results) {
-      let shareStr = this.toCoinStr(share);
+    for (let share of teamResults) {
+      const optimalResult = ExchangeRate.optimalExchange(share, coinOpts);
+      const shareStr = this.toCoinStr(optimalResult);
       if (!shareMap.hasOwnProperty(shareStr)) {
         shareMap[shareStr] = {
-          result: share,
+          result: optimalResult,
           count: 0
         }
       }
@@ -96,22 +93,18 @@ export default class CoinConverterCalculator extends Component {
   }
 
   componentDidUpdate = (prevProps, prevState, snapshot) => {
-    if (prevState == undefined ||
-      !(prevState.cp == this.state.cp &&
-      prevState.sp == this.state.sp &&
-      prevState.ep == this.state.ep &&
-      prevState.gp == this.state.gp &&
-      prevState.pp == this.state.pp &&
-      prevState.isCSGOnly == this.state.isCSGOnly &&
-      prevState.partySize == this.state.partySize)) {
+    const { cp, sp, ep, gp, pp, isCSGOnly, partySize } = this.state;
 
-      const coins = {
-        cp: this.state.cp,
-        sp: this.state.sp,
-        ep: this.state.ep,
-        gp: this.state.gp,
-        pp: this.state.pp,
-      }
+    if (prevState == undefined ||
+      !(prevState.cp == cp &&
+      prevState.sp == sp &&
+      prevState.ep == ep &&
+      prevState.gp == gp &&
+      prevState.pp == pp &&
+      prevState.isCSGOnly == isCSGOnly &&
+      prevState.partySize == partySize)) {
+
+      const coins = { cp, sp, ep, gp, pp };
 
       //TODO: There should be another way to do this
       if (coins.cp == 0 && coins.sp == 0 && coins.ep == 0 
@@ -122,9 +115,10 @@ export default class CoinConverterCalculator extends Component {
         return;
       }
       
+      const coinOpts = isCSGOnly ? ["cp", "sp", "gp"] : [];
 
       this.setState({
-        humanReadableResult: this.getPerPersonResults(coins),
+        humanReadableResult: this.getPerPersonResults(coins, coinOpts),
       });
     }
   }
@@ -172,7 +166,7 @@ export default class CoinConverterCalculator extends Component {
         <div class="form-check">
             <label class="form-check-label">
                 <input class="form-check-input" type="checkbox" id="csgCoins" 
-                name="csgCoins" onChange={this.onChange} checked={this.state.isCSGOnly}>
+                name="csgCoins" onChange={this.onCheckboxChange} defaultChecked>
                 </input>
                 Exchange only for copper, silver, and gold
             </label> 
